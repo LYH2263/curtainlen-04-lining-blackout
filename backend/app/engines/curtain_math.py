@@ -22,3 +22,15 @@ def fabric_meters(
         "meters": round(meters, 2),
         "fabric_width": float(fabric_width),
     }
+
+
+def lining_meters(window_h: float, hem: float, panels: int) -> dict:
+    if float(hem) < 0:
+        raise ValueError("lining hem must be >= 0")
+    cut_h = float(window_h) + 2 * float(hem)
+    meters = int(panels) * cut_h
+    return {
+        "panels": int(panels),
+        "cut_height": round(cut_h, 3),
+        "meters": round(meters, 2),
+    }
